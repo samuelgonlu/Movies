@@ -23,7 +23,8 @@ namespace Movies.Controllers
         [HttpPost]
         public object Post([FromBody] UserLogin login)
         {
-            return _userService.Login(login);
+            //return _userService.Login(login);
+            return 1;
         }
     }
 }

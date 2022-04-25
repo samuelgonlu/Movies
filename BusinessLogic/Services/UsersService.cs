@@ -15,6 +15,7 @@ namespace BusinessLogic.Services
             _repositoryManager = repositoryManager;
         }
 
+
         public List<User> GetUsers()
         {
             return _repositoryManager.Users.GetAll().Select(x => new User()
@@ -25,16 +26,6 @@ namespace BusinessLogic.Services
             }).ToList();
 
         }
-
-        //public List<DTO.Movie> GetUserMovies()
-        //{
-
-        //}
-
-        //public List<DTO.Movie> AddUserMovie(DTO.Movie movie)
-        //{
-
-        //}
 
         public User CreateUser(UserSession user)
         {
@@ -48,7 +39,6 @@ namespace BusinessLogic.Services
                 Name = user.Name,
                 Password = user.Password
             };
-
             var dbUser = _repositoryManager.Users.Add(domainUser);
             _repositoryManager.Save();
 

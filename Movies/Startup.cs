@@ -25,9 +25,12 @@ namespace Movies
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<IMoviesRepository, MoviesRepository>();
             services.AddTransient<IRepositoryManager, RepositoryManager>();
-
+            services.AddTransient<IRepositoryManagerM, RepositoryManager>();
+            services.AddTransient<MoviesService>();
             services.AddTransient<UsersService>();
+            
 
             services.AddDbContext<MoviesContext>(opts =>
               opts.UseSqlServer(Configuration.GetConnectionString("MoviesContext")));

@@ -27,5 +27,7 @@ namespace Movies.Controllers
         {
             return _usersService.CreateUser(session);
         }
+
+       
     }
 }

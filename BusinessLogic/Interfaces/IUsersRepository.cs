@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BusinessLogic.DomainModels;
+using System.Collections.Generic;
 
 namespace BusinessLogic.Interfaces
 {
@@ -7,5 +8,6 @@ namespace BusinessLogic.Interfaces
         public List<DomainModels.User> GetAll();
 
         public DomainModels.User Add(DomainModels.User user);
+
     }
 }
