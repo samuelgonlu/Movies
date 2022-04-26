@@ -9,7 +9,7 @@ namespace BusinessLogic.Services
     public class UsersService
     {
         private readonly IRepositoryManager _repositoryManager;
-
+         
         public UsersService(IRepositoryManager repositoryManager)
         {
             _repositoryManager = repositoryManager;
@@ -31,17 +31,26 @@ namespace BusinessLogic.Services
         {
 
             //Valida que no exista
-            
-
-            var domainUser = new DomainModels.User()
+            List<DTO.User> listusers = new List<DTO.User>();
+            listusers = _repositoryManager.Users.findBy(user.Email).Select(x => new User()
             {
-                Email = user.Email,
-                Name = user.Name,
-                Password = user.Password
-            };
-            var dbUser = _repositoryManager.Users.Add(domainUser);
-            _repositoryManager.Save();
-
+                Email =x.Email,
+                Name = x.Name,
+                UserId = x.UserId
+            }).ToList();
+            var domainUser = new DomainModels.User();
+            var dbUser = new DomainModels.User();
+            if (listusers.Count() == 0)
+            {
+                domainUser = new DomainModels.User()
+                {
+                    Email = user.Email,
+                    Name = user.Name,
+                    Password = user.Password
+                };
+                 dbUser = _repositoryManager.Users.Add(domainUser);
+                _repositoryManager.Save();
+            }
             return dbUser.ToDTO();
 
         }

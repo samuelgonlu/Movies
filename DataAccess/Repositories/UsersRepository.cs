@@ -24,6 +24,22 @@ namespace DataAccess.Repositories
             return userModel.ToDomainModel();
         }
 
+        public List<User> AddFail(string email)
+        {
+            List<Models.User> users = FindByCondition(x => x.Email == email, false).ToList();
+
+            var userDomain = users.Select(x => x.ToDomainModel());
+            return userDomain.ToList();
+        }
+
+        public List<User> findBy(string email)
+        {
+            List<Models.User> users = FindByCondition(x => x.Email == email, false).ToList();
+
+            var userDomain = users.Select(x => x.ToDomainModel());
+            return userDomain.ToList();
+        }
+
         public List<User> GetAll()
         {
             var users = FindAll(false).ToList();
