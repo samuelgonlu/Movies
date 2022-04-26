@@ -8,6 +8,5 @@ namespace BusinessLogic.Interfaces
         public List<DomainModels.User> GetAll();
         public List<DomainModels.User> findBy(string email);
         public DomainModels.User Add(DomainModels.User user);
-        public List<DomainModels.User> AddFail(string email);
     }
 }
