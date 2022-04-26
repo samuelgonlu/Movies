@@ -28,12 +28,12 @@ namespace BusinessLogic.Services
 
         public List<DTO.Movie> GetUserMovies(string user)
         {
-            return _repositoryManagerm.Movies.GetAll().Select(x => new Movie()
+            return _repositoryManagerm.Movies.findBy(user).Select(x => new Movie()
             {
                 Id = x.Id,
                 Name = x.Name,
                 Genre = x.Genre,
-                UserId = user
+                UserId = x.UserId
             }).ToList();
         }
 
