@@ -20,7 +20,14 @@ namespace Movies.Controllers
         [HttpGet, Route("/movies")]
         public List<Movie> GetMovies()
         {
-            return _moviesService.GetUserMovies();
+            return _moviesService.GetAll();
+        }
+
+        [HttpGet, Route("movies/{id_user}")]
+        public List<Movie> GetUserMov ([FromRoute] string id_user)
+        {   
+
+            return _moviesService.GetUserMovies(id_user);
         }
 
         [HttpPost, Route("/movies")]

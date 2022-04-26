@@ -6,6 +6,8 @@ namespace BusinessLogic.Interfaces
     {
         public List<DomainModels.Movie> GetAll();
 
+        public List<DomainModels.Movie> findBy(string id);
+
         public DomainModels.Movie Add(DomainModels.Movie movie);
     }
 }

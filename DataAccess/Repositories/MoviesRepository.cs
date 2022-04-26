@@ -2,7 +2,9 @@
 using BusinessLogic.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using DataAccess.Extensions;
+using System;
 
 namespace DataAccess.Repositories
 {
@@ -26,6 +28,14 @@ namespace DataAccess.Repositories
         public List<Movie> GetAll()
         {
             var movies = FindAll(false).ToList();
+
+            var moviesDomain = movies.Select(x => x.ToDomainModel());
+            return moviesDomain.ToList();
+        }
+
+        public List<Movie> findBy(string id)
+        {
+            List<Models.Movie> movies = FindByCondition(x => x.UserId == id, false).ToList();
 
             var moviesDomain = movies.Select(x => x.ToDomainModel());
             return moviesDomain.ToList();

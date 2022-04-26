@@ -31,5 +31,7 @@ namespace DataAccess.Repositories
             var usersDomain = users.Select(x => x.ToDomainModel());
             return usersDomain.ToList();
         }
+
+       
     }
 }

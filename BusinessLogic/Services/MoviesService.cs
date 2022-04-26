@@ -15,7 +15,7 @@ namespace BusinessLogic.Services
             _repositoryManagerm = repositoryManagerm;
         }
 
-        public List<DTO.Movie> GetUserMovies()
+        public List<DTO.Movie> GetAll()
         {
             return _repositoryManagerm.Movies.GetAll().Select(x => new Movie()
             {
@@ -23,6 +23,17 @@ namespace BusinessLogic.Services
                 Name = x.Name,
                 Genre = x.Genre,
                 UserId = x.UserId
+            }).ToList();
+        }
+
+        public List<DTO.Movie> GetUserMovies(string user)
+        {
+            return _repositoryManagerm.Movies.GetAll().Select(x => new Movie()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Genre = x.Genre,
+                UserId = user
             }).ToList();
         }
 
